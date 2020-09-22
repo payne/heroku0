@@ -37,7 +37,7 @@ public class TaskController {
     return showAllTasks(model);
   }
 
-  @RequestMapping(method = RequestMethod.DELETE)
+  @RequestMapping("/delete")
   public String deleteTask(ModelMap model, @RequestParam("taskId") Long id) {
     this.taskRepo.deleteById(id);
     return showAllTasks(model);

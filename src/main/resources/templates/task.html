@@ -45,7 +45,7 @@
                 <td th:text="${task.name}" class="table-text"></td>
                 <!-- Delete Button -->
                 <td>
-                  <form th:object="${deleteTask}" th:method="DELETE">
+                  <form th:object="${deleteTask}" action="/delete" th:method="DELETE">
                     <input type="hidden" name="taskId" th:value="${task.id}">
                     <button type="submit" class="btn btn-danger">
                       <i class="fa fa-trash"></i> Delete
