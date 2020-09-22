@@ -24,7 +24,7 @@ public class TaskController {
 
   @RequestMapping(method = RequestMethod.GET)
   public String showAllTasks(ModelMap model) {
-    System.out.println("showAllTasks....");
+    System.out.println("showAllTasks.......");
     Iterable<Task> tasks = this.taskRepo.findAll();
     model.addAttribute("tasks", tasks);
     model.addAttribute("newTask", new Task());
