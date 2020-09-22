@@ -1,6 +1,5 @@
 package demo.tasks;
 
-import javax.validation.Valid;
 import java.lang.Iterable;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +25,7 @@ public class TaskController {
   @RequestMapping(method = RequestMethod.GET)
   public String showAllTasks(ModelMap model) {
     System.out.println("showAllTasks....");
-    Iterable<Task> tasks = this.taskRepo.findAllCached();
+    Iterable<Task> tasks = this.taskRepo.findAll();
     model.addAttribute("tasks", tasks);
     model.addAttribute("newTask", new Task());
     return "task";
@@ -34,17 +33,17 @@ public class TaskController {
 
   @RequestMapping(method = RequestMethod.POST)
   public String newTask(ModelMap model,
-                        @ModelAttribute("newTask") @Valid Task task,
+                        @ModelAttribute("newTask") Task task,
                         BindingResult result) {
     if (!result.hasErrors()) {
-      this.taskRepo.saveAndClearCache(task);
+      this.taskRepo.save(task);
     }
     return showAllTasks(model);
   }
 
   @RequestMapping(method = RequestMethod.DELETE)
   public String deleteTask(ModelMap model, @RequestParam("taskId") Long id) {
-    this.taskRepo.deleteByIdAndClearCache(id);
+    this.taskRepo.deleteById(id);
     return showAllTasks(model);
   }
 }
