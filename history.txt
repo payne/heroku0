@@ -1,0 +1,45 @@
+  603  spring init --d=web,data-jpa,thymeleaf -g demo -a tasks -n TaskList heroku0
+  604  cd heroku0
+  606  git init .
+  607  git add .
+  608  git commit -am 'spring init --d=web,data-jpa,thymeleaf -g demo -a tasks -n TaskList heroku0'
+  609  echo 'web: java -Dserver.port=$PORT $JAVA_OPTS -jar target/*.jar' > Procfile
+  611  heroku create
+  612  heroku addons:create heroku-postgresql:hobby-dev
+  617  git add .
+  618  git commit -am 'Simple JPA task list try one.'
+  620  git push heroku master
+  621  vi pom.xml 
+  623  git commit -am 'Change java from 11 to 8'
+  624  git push heroku master
+  625  git commit -am 'fix problems from copy and paste'' '
+  626  git status
+  627  git push heroku master
+  629  heroku logs --tail
+  628  heroku open
+  630  git status
+  631  cat src/main/resources/db/changelog/db.changelog-master.yaml
+  632  git add .
+  633  git commit -am 'Liquidbase for creating task table.'
+  634  git push heroku master
+  635  heroku logs --tail
+  636  heroku help
+  637  heroku apps help
+  638  heroku pg
+  639  git push heroku master
+  640  git status
+  641  git commit -am 'Touched a java file to create a restart.'
+  642  git push heroku master
+  643  heroku logs --tail
+  644  git diff
+  645  git commit -am 'Added liquibase'
+  646  git push heroku master
+  647  git commit -am 'Added liquibase -- fix typeo'
+  648  git push heroku master
+  649  heroku logs --tail
+  650  git commit -am 'Unpin liquidbase version.'
+  651  git push heroku master
+  652  heroku logs --tail
+  653  git status
+  654  ls
+  655  history | tee history.txt
