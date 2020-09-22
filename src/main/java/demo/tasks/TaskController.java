@@ -27,17 +27,13 @@ public class TaskController {
     System.out.println("showAllTasks.......");
     Iterable<Task> tasks = this.taskRepo.findAll();
     model.addAttribute("tasks", tasks);
-    model.addAttribute("newTask", new Task());
+    // model.addAttribute("newTask", new Task());
     return "task";
   }
 
   @RequestMapping(method = RequestMethod.POST)
-  public String newTask(ModelMap model,
-                        @ModelAttribute("newTask") Task task,
-                        BindingResult result) {
-    if (!result.hasErrors()) {
-      this.taskRepo.save(task);
-    }
+  public String newTask(ModelMap model, @ModelAttribute("newTask") Task task) {
+    this.taskRepo.save(task);
     return showAllTasks(model);
   }
 
