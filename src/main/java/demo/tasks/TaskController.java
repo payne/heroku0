@@ -14,20 +14,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/")
 public class TaskController {
-
   private TaskRepository taskRepo;
 
-  @Autowired
   public TaskController(TaskRepository repo) {
     this.taskRepo = repo;
   }
 
   @RequestMapping(method = RequestMethod.GET)
   public String showAllTasks(ModelMap model) {
-    System.out.println("showAllTasks.......");
     Iterable<Task> tasks = this.taskRepo.findAll();
     model.addAttribute("tasks", tasks);
-    // model.addAttribute("newTask", new Task());
     return "task";
   }
 
